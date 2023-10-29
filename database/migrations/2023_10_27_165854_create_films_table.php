@@ -11,14 +11,18 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('users', function (Blueprint $table) {
+        Schema::create('films', function (Blueprint $table) {
             $table->engine = 'InnoDB';
             $table->id()->unsigned();
-            $table->string('firstName');
-            $table->string('lastName');
-            $table->string('email')->unique();
-            $table->string('phoneNumber')->nullable();
-            $table->string('password');
+            $table->string('title');
+            $table->text('decription');
+            $table->string('category');
+            $table->string('image');
+            $table->float('rating');
+            $table->integer('date');
+            $table->string('dayOfTheWeek');
+            $table->integer('place');
+            $table->string('salle');
             $table->timestamps();
         });
     }
@@ -28,6 +32,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('users');
+        Schema::dropIfExists('films');
     }
 };
