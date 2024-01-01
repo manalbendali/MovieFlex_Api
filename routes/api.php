@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\FilmController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\ReservationController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Models\User;
@@ -26,10 +27,17 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 /* start user Routes */
 
 Route::post('users',[UserController::class, 'store']);
+Route::post('login', [UserController::class, 'login']);
+Route::get('showUserData/{id}', [UserController::class, 'show']);
 
-/* end user Routes */
+/* end user Routes */ 
 /*start film Routes*/
 
 Route::get('filmDay/{day}', [FilmController::class, 'show']);
+Route::get('filmSuggestion/{category}', [FilmController::class, 'showByCategry']);
 
 /*end film Routes*/
+
+/*start reservation*/
+Route::post('/reservations', [ReservationController::class, 'store']);
+/*end reservation */

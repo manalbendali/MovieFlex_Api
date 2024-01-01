@@ -11,4 +11,9 @@ class FilmController extends Controller
     {
         return Film::where('dayOfTheWeek', 'LIKE', '%' . $day . '%')->get();
     }
+
+    public function showByCategry($category)
+    {
+        return Film::where('category', 'LIKE', '%' . $category . '%')->get();
+    }
 }
